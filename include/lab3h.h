@@ -1,7 +1,7 @@
-/*    Á´Ê½´æ´¢½á¹¹ÏÂÏßĞÔ±íµÄ»ù±¾²Ù×÷     */
+/*    é“¾å¼å­˜å‚¨ç»“æ„ä¸‹çº¿æ€§è¡¨çš„åŸºæœ¬æ“ä½œ     */
 
 
-/*³õÊ¼»¯Á´±í£º´´½¨Ò»¿ÕÁ´±í*/
+/*åˆå§‹åŒ–é“¾è¡¨ï¼šåˆ›å»ºä¸€ç©ºé“¾è¡¨*/
 void Initiate(list)
 struct LIST_TYPE *list;
 {
@@ -9,14 +9,14 @@ struct LIST_TYPE *list;
   list->Length=0;
 }
 
-/*È¡Á´±íµÄ³¤¶È£º¹²ÓĞ¼¸¸ö½áµã*/
+/*å–é“¾è¡¨çš„é•¿åº¦ï¼šå…±æœ‰å‡ ä¸ªç»“ç‚¹*/
 int Length(list)
 struct LIST_TYPE *list;
 {
   return list->Length;
 }
 
-/*¶ÁÈ¡ĞòºÅÎªIµÄ½áµã£¨¼´Á´±íÖĞµÄµÚI¸ö½áµã£©µÄÊı¾İÓò*/
+/*è¯»å–åºå·ä¸ºIçš„ç»“ç‚¹ï¼ˆå³é“¾è¡¨ä¸­çš„ç¬¬Iä¸ªç»“ç‚¹ï¼‰çš„æ•°æ®åŸŸ*/
 int *GetAt(list,I)
 struct LIST_TYPE *list;
 int I;
@@ -35,7 +35,7 @@ int I;
     return NULL;
 }
 
-/*²éÕÒÊı¾İÓòÎªxµÄ½áµã*/
+/*æŸ¥æ‰¾æ•°æ®åŸŸä¸ºxçš„ç»“ç‚¹*/
 struct NODE_TYPE *Find(list,x)
 struct LIST_TYPE *list;
 int x;
@@ -51,7 +51,7 @@ int x;
   return NULL;
 }
 
-/*²éÕÒÊı¾İÓòÎªxµÄ½áµãµÄÇ°Çı½áµã*/
+/*æŸ¥æ‰¾æ•°æ®åŸŸä¸ºxçš„ç»“ç‚¹çš„å‰é©±ç»“ç‚¹*/
 struct NODE_TYPE *GetPrior(list,x)
 struct LIST_TYPE *list;
 int x;
@@ -71,7 +71,7 @@ int x;
   return NULL;
 }
 
-/*²éÕÒÊı¾İÓòÎªxµÄ½áµãµÄºó¼Ì½áµã*/
+/*æŸ¥æ‰¾æ•°æ®åŸŸä¸ºxçš„ç»“ç‚¹çš„åç»§ç»“ç‚¹*/
 struct NODE_TYPE *GetNext(list,x)
 struct LIST_TYPE *list;
 int x;
@@ -83,8 +83,8 @@ int x;
     return pNode->pNext;
 }
 
-/*ÔÚÁ´±íµÄµÚI¸ö½áµãÎ»ÖÃ²åÈëÊı¾İÓòÎªxµÄ½áµã*/
-/*bool¡¡Insert(list,I,x)*/
+/*åœ¨é“¾è¡¨çš„ç¬¬Iä¸ªç»“ç‚¹ä½ç½®æ’å…¥æ•°æ®åŸŸä¸ºxçš„ç»“ç‚¹*/
+/*boolã€€Insert(list,I,x)*/
 int Insert(list,I,x)
 struct LIST_TYPE *list;
 int I;
@@ -121,7 +121,7 @@ int x;
   return 1;
 }
 
-/*É¾³ıÁ´±íµÄµÚI¸ö½áµã*/
+/*åˆ é™¤é“¾è¡¨çš„ç¬¬Iä¸ªç»“ç‚¹*/
 int Delete(list,I)
 struct LIST_TYPE *list;
 int I;
