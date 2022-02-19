@@ -3,21 +3,27 @@
 
 #include "stdio.h"
 #define N 5
-
+/**
+ * @brief 
+ * Create a student struct
+ */
 struct student {
     char num[6];
     char name[8];
     int score[4];
 } stu[N];
-
+/**
+ * @brief 
+ * input students' information
+ */
 void input() {
     int i, j;
     for (i = 0; i < N; i++) {
         printf("\n please input %d of %d\n", i + 1, N);
         printf("num: ");
-        scanf("%s", &stu[i].num);
+        scanf("%s", stu[i].num);
         printf("name: ");
-        scanf("%s", &stu[i].name);
+        scanf("%s", stu[i].name);
         for (j = 0; j < 3; j++) {
             printf("score %d.", j + 1);
             scanf("%d", &stu[i].score[j]);
@@ -25,7 +31,10 @@ void input() {
         printf("\n");
     }
 }
-
+/**
+ * @brief
+ * print students' information
+ */
 void print() {
     int i, j;
     printf("\nNo. Name Sco1 Sco2 Sco3\n");
@@ -37,8 +46,9 @@ void print() {
     }
 }
 
-main() {
+void main() {
     input();
     print();
-    getch();
+    // getch();//Windows console等待键盘输入，防止一闪而过
+    // return 0;
 }

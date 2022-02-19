@@ -3,8 +3,10 @@
 // #include "conio.h"
 #include "stdio.h"
 
+// gcc src / LAB3B.c - o build / LAB3B.exe - g - O2 - Iinclude - Wno - unused - result - lcurses
+
 #define N 5
-struct student {
+    struct student {
     char num[6];
     char sex[8];
     char name[8];
@@ -16,15 +18,15 @@ void input() {
     for (i = 0; i < N; i++) {
         printf("\n please input %d of %d\n", i + 1, N);
         printf("num: ");
-        scanf("%s", &stu[i].num);
+        scanf("%s", stu[i].num);
         printf("sex(man/woman): ");
-        scanf("%s", &stu[i].sex);
+        scanf("%s", stu[i].sex);
         if (strcmp(stu[i].sex, "man") != 0 && strcmp(stu[i].sex, "woman") != 0) {
             printf("wrong! Please enter man or woman \n");
-            scanf("%s", &stu[i].sex);
+            scanf("%s", stu[i].sex);
         }
         printf("name: ");
-        scanf("%s", &stu[i].name);
+        scanf("%s", stu[i].name);
         for (j = 0; j < 3; j++) {
             printf("score %d.", j + 1);
             scanf("%d", &stu[i].score[j]);
@@ -54,9 +56,10 @@ void Sex() {
     printf("The number of man is %d", sum1);
     printf("The number of woman is %d", sum2);
 }
-main() {
+
+void main() {
     input();
     print();
     Sex();
-    getch();
+    // getch();
 }

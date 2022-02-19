@@ -1,24 +1,46 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*链式队列结点结构*/
-struct NODE_TYPE {
+typedef struct Node Node;
+
+struct Node {
     int Data;
     /*后继结点,负责建立队列各结点之间的联系，前一个结点的pNext指向后一个结点，形成链式队列*/
-    struct NODE_TYPE *pNext;
+    Node *pNext;
 };
 
 /* 链式队列结构*/
-struct LINK_QUEUE {
-    struct NODE_TYPE *front; /*链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)*/
-    struct NODE_TYPE *rear;  /*链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)*/
+typedef struct {
+    Node *front; /*链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)*/
+    Node *rear;  /*链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)*/
     int Length;
-};
+} LINK_QUEUE;
+
+// typedef struct node {
+//     struct student stu;
+//     struct node *pnext;
+// } stud;
+
+// /*链式队列结点结构*/
+// typedef struct {
+//     int Data;
+//     /*后继结点,负责建立队列各结点之间的联系，前一个结点的pNext指向后一个结点，形成链式队列*/
+//     Node *pNext;
+// } Node;
+
+// /* 链式队列结构*/
+// typedef struct {
+//     Node *front; /*链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)*/
+//     Node *rear;  /*链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)*/
+//     int Length;
+// } LINK_QUEUE;
 
 /*创建空队列： pQHead为队列头结点*/
-void InitQueue(pQHead) struct LINK_QUEUE *pQHead;
-{
+void InitQueue(LINK_QUEUE *pQHead) {
     /*队列头结点的队头和队尾指针申请内存*/
-    pQHead->front = pQHead->rear = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    pQHead->front = pQHead->rear = (Node *)malloc(sizeof(Node));
     if (!pQHead->front) /*检测是否申请失败*/
         printf("pQHead->front malloc error!\n");
     /*设置头结点指针域为空*/
@@ -26,18 +48,35 @@ void InitQueue(pQHead) struct LINK_QUEUE *pQHead;
     pQHead->Length = 0;
 }
 /*判断队列是否为空*/
-int IsEmpty(pQHead)
-struct LINK_QUEUE *pQHead;
-{
+int IsEmpty(LINK_QUEUE *pQHead) {
     /*队头指针与队尾指针相等，说明队列为空*/
     return (!pQHead->Length);
 }
+
+int IsRigth(int *i, int *j) {
+    char a[50];
+    scanf("%s", a);
+
+    /*输入错误错误则进行提示，直到正确跳出*/
+    while (strspn(a, "0123456789") != strlen(a)) {
+        // TextColor(4);
+        printf("Input is wrong\n");
+        // TextColor(7);
+        if (*i >= 0 && *j < 0)
+            printf("Please enter an integer\nPlease enter the %dth element : ", *i + 1);
+        else if (*i < 0 && *j < 0)
+            printf("Please enter an integer: ");
+        else
+            printf("Please enter an element (%d/4): ", *i + 1);
+        scanf("%s", a);
+    }
+    return atoi(a); /*返回输入类型正确的数据*/
+}
+
 /*新元素入队:即链式队列的尾结点指针，指向存放新元素的新结点*/
-void Add(pQHead, x) struct LINK_QUEUE *pQHead;
-int x;
-{
+void Add(LINK_QUEUE *pQHead, int x) {
     /*创建新结点,并申请内存*/
-    struct NODE_TYPE *temp = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    Node *temp = (Node *)malloc(sizeof(Node));
     if (!temp)
         printf("temp malloc error!\n");
     temp->Data = x;
@@ -47,10 +86,8 @@ int x;
     pQHead->Length++;
 }
 
-int Del(pQHead)
-struct LINK_QUEUE *pQHead;
-{
-    struct NODE_TYPE *temp;
+int Del(LINK_QUEUE *pQHead) {
+    Node *temp;
     if (IsEmpty(pQHead)) /*如果队列为空,则返回Error*/
     {
         printf("Error! Queue Empty!\n");
@@ -66,10 +103,7 @@ struct LINK_QUEUE *pQHead;
     return 1;
 }
 /*取队首*/
-int GetFront(pQHead, y)
-struct LINK_QUEUE *pQHead;
-int *y;
-{
+int GetFront(LINK_QUEUE *pQHead, int *y) {
     if (IsEmpty(pQHead)) {
         printf("\tQueue Empty!");
         return 0;
@@ -79,10 +113,7 @@ int *y;
 }
 
 /*取队尾*/
-int GetRear(pQHead, y)
-struct LINK_QUEUE *pQHead;
-int *y;
-{
+int GetRear(LINK_QUEUE *pQHead, int *y) {
     if (IsEmpty(pQHead)) {
         printf("\tQueue Empty!");
         return 0;
@@ -91,9 +122,8 @@ int *y;
     return 1;
 }
 /*清空队列*/
-void Clear(pQHead) struct LINK_QUEUE *pQHead;
-{
-    struct NODE_TYPE *temp = pQHead->front->pNext;
+void Clear(LINK_QUEUE *pQHead) {
+    Node *temp = pQHead->front->pNext;
     while (temp) {
         pQHead->front->pNext = temp->pNext;
         free(temp);
@@ -103,9 +133,8 @@ void Clear(pQHead) struct LINK_QUEUE *pQHead;
     pQHead->Length = 0;
 }
 
-void PrintNode(pQHead) struct LINK_QUEUE *pQHead;
-{
-    struct NODE_TYPE *temp = pQHead->front;
+void PrintNode(LINK_QUEUE *pQHead) {
+    Node *temp = pQHead->front;
     int i = 1;
     /*如果队列为空退出*/
     if (IsEmpty(pQHead)) {
@@ -135,8 +164,7 @@ void PrintNode(pQHead) struct LINK_QUEUE *pQHead;
 //    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), c); /*根据C的值设置字体颜色*/
 //}
 /*入队四个元素，出队两个元素，重复执行三次*/
-void In_OutPut(pQHead) struct LINK_QUEUE *pQHead;
-{
+void In_OutPut(LINK_QUEUE *pQHead) {
     int i, j, y;
     for (j = 0; j < 3; j++) {
         for (i = 0; i < 4; i++) {
@@ -152,22 +180,4 @@ void In_OutPut(pQHead) struct LINK_QUEUE *pQHead;
         GetRear(pQHead, &y);
         printf("Rear  : %d\n\n", y);
     }
-}
-int IsRigth(int *i, int *j) {
-    char *a[50];
-    scanf("%s", a);
-    for (; strspn(a, "0123456789") != strlen(a);) /*输入错误错误则进行提示，直到正确跳出*/
-    {
-        //TextColor(4);
-        printf("Input is wrong\n");
-        //TextColor(7);
-        if (*i >= 0 && *j < 0)
-            printf("Please enter an integer\nPlease enter the %dth element : ", *i + 1);
-        else if (*i < 0 && *j < 0)
-            printf("Please enter an integer: ");
-        else
-            printf("Please enter an element (%d/4): ", *i + 1);
-        scanf("%s", a);
-    }
-    return atoi(a); /*返回输入类型正确的数据*/
 }

@@ -51,6 +51,7 @@ int main() {
         printf("Rear  : %d\n", y);
     }
     free(Queue);
-    Queue = NULL;
+    //Queue = NULL;
+    Queue = 0;
     return 0;
 }

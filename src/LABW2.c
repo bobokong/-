@@ -70,7 +70,7 @@ int main() {
         GetRear(&Queue, &y);
         printf("Rear  : %d\n", y);
     }
-	return 1;
+    return 0;
     // getch();
 }
 
