@@ -22,11 +22,15 @@ SOURCES=$(patsubst %,$(IDIR)/%, $(sources))
 OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))
 # OBJS = $(patsubst %,$(ODIR)/%, $(_OBJS))
 
+all: makedir main 
+
 main: $(OBJS)
 
 $(OBJS): $(ODIR)/%.exe: $(IDIR)/%.c
 	$(CC) $< -o $@ $(CFLAGS)
 
+makedir:
+	mkdir -p $(ODIR)
 # $(ODIR)/%: $(IDIR)/%.c
 # 	$(CC) $(CFLAGS) $< -o $@ 
 
