@@ -1,6 +1,9 @@
-#include "conio.h"
+// #include "conio.h"
+#include <curses.h>
+
 #include "stdio.h"
 #define N 5
+
 struct student {
     char num[6];
     char name[8];
@@ -37,6 +40,5 @@ void print() {
 main() {
     input();
     print();
-
     getch();
 }

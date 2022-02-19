@@ -7,7 +7,8 @@ IDIR=src
 ODIR=build
 
 # LAB2B.c 
-sources=ch2_a.c ch2_b.c ch2_c.c
+sources=ch2_a.c ch2_b.c ch2_c.c \
+	LAB3A.c LAB3C.c LAB3C.c
 
 SOURCES=$(patsubst %,$(IDIR)/%, $(sources))
 OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))
