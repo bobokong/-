@@ -16,8 +16,7 @@ struct LINK_QUEUE {
 };
 
 //创建空队列： pQHead即为队列头结点
-void InitQueue(pQHead) struct LINK_QUEUE *pQHead;
-{
+void InitQueue(struct LINK_QUEUE *pQHead) {
     //队列头结点的队头和队尾指针申请内存
     pQHead->front = pQHead->rear = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
     if (!pQHead->front)  //检测是否申请失败

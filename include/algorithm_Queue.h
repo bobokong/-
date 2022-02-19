@@ -12,11 +12,18 @@
  */
 #define MAX_LEN 8
 
-struct st_QUEUE {
+// // first solution 
+// struct st_QUEUE {
+//     int Q[MAX_LEN];
+//     int Front, Rear;
+// };
+// typedef struct st_QUEUE QUEUE;
+
+/** second solution */
+typedef struct {
     int Q[MAX_LEN];
     int Front, Rear;
-};
-typedef struct st_QUEUE QUEUE;
+} QUEUE;
 
 /*数组下标与元素个数不对应；数组元素下标=元素个数-1*/
 /*初始化队列：创建一空队列*/
