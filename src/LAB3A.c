@@ -1,10 +1,10 @@
+#include <stdio.h>
 // #include "conio.h"
-#include <curses.h>
+// #include <curses.h>
 
-#include "stdio.h"
 #define N 5
 /**
- * @brief 
+ * @brief
  * Create a student struct
  */
 struct student {

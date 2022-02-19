@@ -1,9 +1,7 @@
-#include <curses.h>
 #include <string.h>
+#include <stdio.h>
+// #include <curses.h>
 // #include "conio.h"
-#include "stdio.h"
-
-// gcc src / LAB3B.c - o build / LAB3B.exe - g - O2 - Iinclude - Wno - unused - result - lcurses
 
 #define N 5
     struct student {

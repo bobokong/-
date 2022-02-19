@@ -12,11 +12,21 @@ on:
 name: makefile build
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - name: checkout repo
-          uses: actions/checkout@v2
-        
-        - name: build application
-          run: make
+  build:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }}
+  
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: macOS-latest}
+          - {os: windows-latest}
+          - {os: ubuntu-latest}
+          
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
+    
+    - name: build application
+      run: make

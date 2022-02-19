@@ -1,6 +1,5 @@
-#include <curses.h>
-
 #include "stdio.h"
+// #include <curses.h>
 // #include "conio.h"
 
 #define N 1

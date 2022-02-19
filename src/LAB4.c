@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "malloc.h" /*包含动态内存分配函数的头文件*/
-// #include "stdio.h"
-#include "string.h"
+// #include "malloc.h" // deprecated use <stdlib.h> instead
+#include <string.h>
+
 #define N 5
 
 struct student {
@@ -58,7 +58,6 @@ stud *input(int n) /*建立单链表的函数，形参n为人数*/
 
         p = s;
     }
-
     return (h);
 }
 
