@@ -1,6 +1,7 @@
 CC=gcc
 
 CFLAGS=-g -O2 -Iinclude -Wno-unused-result
+# -lcurses
 # `ncurses5-config --cflags --libs`
 
 IDIR=src
@@ -24,7 +25,7 @@ OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))
 main: $(OBJS)
 
 $(OBJS): $(ODIR)/%.exe: $(IDIR)/%.c
-	$(CC) $< -o $@ $(CFLAGS) -lcurses
+	$(CC) $< -o $@ $(CFLAGS)
 
 # $(ODIR)/%: $(IDIR)/%.c
 # 	$(CC) $(CFLAGS) $< -o $@ 

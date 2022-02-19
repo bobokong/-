@@ -1,6 +1,6 @@
 #include "stdio.h"
 // #include "conio.h"
-#include <curses.h>
+// #include <curses.h>
 /**
  * @brief 
  * swap the value of two numbers
@@ -28,6 +28,6 @@ int main() {
     if (c > b)
         swap(&b, &c);
     printf("%d %d %d ", a, b, c);
-    getch();
+    // getch();
     return 0;
 }
