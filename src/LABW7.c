@@ -16,111 +16,101 @@
 /*  ⑨要求：提供尽可能友好的人机对话界面，便于用户（非程序设计者）使用。                                          */
 /*      ****************************************************************************************************      */
 
-#include "stdio.h"
-#include "math.h"
-
 #include "lab7h1.h"
+#include "math.h"
+#include "stdio.h"
 
+int main() {
+    void PrintNode_2();
 
-main()
-{
-  void PrintNode_2();
-
-/*下面填写主程序*/
-    int i,j,x,length,y,Y[10];
-/*  ①创建一个空的循环队列；                                                                                      */
+    /*下面填写主程序*/
+    int i, j, x, length, y, Y[10];
+    /*  ①创建一个空的循环队列；                                                                                      */
     struct QUEUE Queue;
     InitQueue(&Queue);
-/*  ②判断新建的循环队列是否为空和是否为满；                                                                      */
-    if(IsEmpty(&Queue)==1)
+    /*  ②判断新建的循环队列是否为空和是否为满；                                                                      */
+    if (IsEmpty(&Queue) == 1)
         printf("\tQUEUE EMPTY!\n");
-    else if(IsFull(&Queue)==1)
+    else if (IsFull(&Queue) == 1)
         printf("\tQUEUE FULL!\n");
-/*  ③提示用户输入"循环队列的长度"；                                                                              */
+    /*  ③提示用户输入"循环队列的长度"；                                                                              */
     printf("The length of queue is : ");
-    scanf("%d",&length);
-/*  ④根据用户输入的"循环队列的长度"，逐一提示用户输入"循环队列中的各个元素"，完成循环队列的构造；                */
-    for(i=0;i<length;i++)
-    {
-        printf("Enter the %dth Queue :",i+1);
-        scanf("%d",&x);
-        Add(&Queue,x);
+    scanf("%d", &length);
+    /*  ④根据用户输入的"循环队列的长度"，逐一提示用户输入"循环队列中的各个元素"，完成循环队列的构造；                */
+    for (i = 0; i < length; i++) {
+        printf("Enter the %dth Queue :", i + 1);
+        scanf("%d", &x);
+        Add(&Queue, x);
     }
-    GetFront(&Queue,&y);
-    printf("Front : %d\n",y);
-    GetRear(&Queue,&y);
-    printf("Rear  : %d\n",y);
-    if(IsEmpty(&Queue))
+    GetFront(&Queue, &y);
+    printf("Front : %d\n", y);
+    GetRear(&Queue, &y);
+    printf("Rear  : %d\n", y);
+    if (IsEmpty(&Queue))
         printf("\tQUEUE EMPTY!\n");
-    else if(IsFull(&Queue))
+    else if (IsFull(&Queue))
         printf("\tQUEUE FULL!\n");
     else
         printf("QUEUE IS NOT EMPTY AND NOT FULL!\n");
     PrintNode_2(&Queue);
     Clear(&Queue);
-    for(j=0;j<3;j++)
-    {
-		for(i=0;i<4;i++)
-		{   printf("Enter the %dth Queue :",i+1);
-			scanf("%d",&x);
-			Add(&Queue,x);
-		}
-		for(i=0;i<2;i++)
-		{  
-			Del(&Queue,&y);
-			Y[i+j]=y;
-		}
-		PrintNode_2(&Queue);
-		GetFront(&Queue,&y);
-		printf("Frond : %d\n",y);
-		GetRear(&Queue,&y);
-		printf("Rear  : %d\n",y);
+    for (j = 0; j < 3; j++) {
+        for (i = 0; i < 4; i++) {
+            printf("Enter the %dth Queue :", i + 1);
+            scanf("%d", &x);
+            Add(&Queue, x);
+        }
+        for (i = 0; i < 2; i++) {
+            Del(&Queue, &y);
+            Y[i + j] = y;
+        }
+        PrintNode_2(&Queue);
+        GetFront(&Queue, &y);
+        printf("Frond : %d\n", y);
+        GetRear(&Queue, &y);
+        printf("Rear  : %d\n", y);
     }
-
-  getch();
+	return 1;
+    // getch();
 }
-void PrintNode_2(Queue)
-struct QUEUE *Queue;
+
+void PrintNode_2(Queue) struct QUEUE *Queue;
 {
-	int i;
-	if(IsEmpty(Queue))
-	{
-		printf("Queue Empty!");
-		return;
-	}
-/* printf("\nThe node in the QUEUE is:\n");*/
-	printf("\n\tNode:");
-	i=(Queue->Front+1)%MAX_LEN;
-///////////////////////////////////////////////CORRECT
-	do
-	{
-		printf("\t %d",i);
-		i=(i+1)%MAX_LEN;
-	}while(i!=Queue->Rear);
-	printf("\t %d",i);
+    int i;
+    if (IsEmpty(Queue)) {
+        printf("Queue Empty!");
+        return;
+    }
+    /* printf("\nThe node in the QUEUE is:\n");*/
+    printf("\n\tNode:");
+    i = (Queue->Front + 1) % MAX_LEN;
+    ///////////////////////////////////////////////CORRECT
+    do {
+        printf("\t %d", i);
+        i = (i + 1) % MAX_LEN;
+    } while (i != Queue->Rear);
+    printf("\t %d", i);
 
-	printf("\n\tData:");
-	i=(Queue->Front+1)%MAX_LEN;
-///////////////////////////////////////////////CORRECT
-	do
-	{
-		printf("\t %d",Queue->Q[i]);
-		i=(i+1)%MAX_LEN;
-	}while(i!=Queue->Rear);
-	printf("\t %d",Queue->Q[i]);
-	printf("\n\t\tFront");
+    printf("\n\tData:");
+    i = (Queue->Front + 1) % MAX_LEN;
+    ///////////////////////////////////////////////CORRECT
+    do {
+        printf("\t %d", Queue->Q[i]);
+        i = (i + 1) % MAX_LEN;
+    } while (i != Queue->Rear);
+    printf("\t %d", Queue->Q[i]);
+    printf("\n\t\tFront");
 
-	printf("\n\t");
-	i=(Queue->Front+1)%MAX_LEN;
-///////////////////////////////////////////////CORRECT
-	do
-	{
-		printf("\t");
-		i=(i+1)%MAX_LEN;
-	}while(i!=Queue->Rear);
-	printf("\t");
-	printf("Rear");
+    printf("\n\t");
+    i = (Queue->Front + 1) % MAX_LEN;
+    ///////////////////////////////////////////////CORRECT
+    do {
+        printf("\t");
+        i = (i + 1) % MAX_LEN;
+    } while (i != Queue->Rear);
+    printf("\t");
+    printf("Rear");
 
-	printf("\n");
-/* printf("That's all!");*/
+    printf("\n");
+    /* printf("That's all!");*/
 }
