@@ -1,13 +1,13 @@
 CC=gcc
 
-CFLAGS=-g -O2 
+CFLAGS=-g -O2
 # `ncurses5-config --cflags --libs`
 
 IDIR=src
 ODIR=build
 
 # LAB2B.c 
-sources=ch2_a.c ch2_c.c
+sources=ch2_a.c ch2_b.c ch2_c.c
 
 SOURCES=$(patsubst %,$(IDIR)/%, $(sources))
 OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))
@@ -16,7 +16,7 @@ OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))
 main: $(OBJS)
 
 $(OBJS): $(ODIR)/%.exe: $(IDIR)/%.c
-	$(CC) $(CFLAGS) $< -o $@ 
+	$(CC) $< -o $@ $(CFLAGS) -lcurses
 
 # $(ODIR)/%: $(IDIR)/%.c
 # 	$(CC) $(CFLAGS) $< -o $@ 
