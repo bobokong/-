@@ -1,4 +1,10 @@
-#include <stdlib.h>
+#include "DataStructure.h"
+
+struct LIST_STACK {
+    struct Node *pTop;
+    int Length;
+};
+
 
 /*       *******************************************        */
 /*                      链式存储结构下栈的基本操作                           */
@@ -22,9 +28,9 @@ struct LIST_STACK *list_stack;
 void Push(list_stack, x) struct LIST_STACK *list_stack;
 int x;
 {
-    struct NODE_TYPE *pNewNode;
+    struct Node *pNewNode;
 
-    pNewNode = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    pNewNode = (struct Node *)malloc(sizeof(struct Node));
     pNewNode->Data = x;
     pNewNode->pNext = list_stack->pTop;
 
@@ -37,7 +43,7 @@ int Pop(list_stack)
 struct LIST_STACK *list_stack;
 {
     int value;
-    struct NODE_TYPE *pNode;
+    struct Node *pNode;
 
     if (IsEmpty(list_stack))
         return -1;

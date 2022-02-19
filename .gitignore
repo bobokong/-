@@ -5,3 +5,4 @@ build/
 backup/
 
 *debug*
+.vscode/settings.json

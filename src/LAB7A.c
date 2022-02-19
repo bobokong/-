@@ -20,15 +20,7 @@
 #include "math.h"
 #include "stdio.h"
 
-struct NODE_TYPE {
-    int Data;
-    struct NODE_TYPE *pNext;
-};
-struct LIST_TYPE {
-    struct NODE_TYPE *pHead;
-    int Length;
-};
-
+#include "DataStructure.h"
 #include "lab3h.h"
 
 void main() {
@@ -36,8 +28,9 @@ void main() {
 
     /*下面填写主程序*/
     int i, n, x, data;
-    struct NODE_TYPE *id, *data1, *data2;
-    struct NODE_TYPE list;
+    Node *id, *data1, *data2;
+    Node list;
+    
     printf("Intiate List!\n");
     /* ①创建一个空表[Initiate( )]；                                                                              */
     Initiate(&list);
@@ -83,7 +76,7 @@ void main() {
     // getch();
 }
 
-void Reverse(list) struct LIST_TYPE *list;
+void Reverse(list) List *list;
 {
     int i;
     int *node1, *node2;

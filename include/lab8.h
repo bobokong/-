@@ -2,23 +2,23 @@
 #include <stdlib.h>
 
 // 链式队列结点结构
-struct NODE_TYPE {
+struct Node {
     int Data;  //结点数据
     //【负责建立队列各结点之间的联系，前一个结点的next指向后一个结点，形成链式队列
-    struct NODE_TYPE *pNext;  //后继结点
+    struct Node *pNext;  //后继结点
 };
 
 // 链式队列结构
 struct LINK_QUEUE {
-    struct NODE_TYPE *front;  //链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)
-    struct NODE_TYPE *rear;   //链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)
+    struct Node *front;  //链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)
+    struct Node *rear;   //链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)
     int Length;
 };
 
 //创建空队列： pQHead即为队列头结点
 void InitQueue(struct LINK_QUEUE *pQHead) {
     //队列头结点的队头和队尾指针申请内存
-    pQHead->front = pQHead->rear = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    pQHead->front = pQHead->rear = (struct Node *)malloc(sizeof(struct Node));
     if (!pQHead->front)  //检测是否申请失败
         printf("pQHead->front malloc error!\n");
     //设置头结点指针域为空
@@ -40,7 +40,7 @@ void Add(pQHead, x) struct LINK_QUEUE *pQHead;
 int x;
 {
     //创建新结点,并申请内存
-    struct NODE_TYPE *temp = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
     if (!temp)
         printf("temp malloc error!\n");
     temp->Data = x;      //将要插入元素存入新结点的数据域内
@@ -57,7 +57,7 @@ int x;
 int Del(pQHead)
 struct LINK_QUEUE *pQHead;
 {
-    struct NODE_TYPE *temp;
+    struct Node *temp;
     //如果队列为空,则返回ERRIR
     if (IsEmpty(pQHead)) {
         printf("Queue Empty!\n");
@@ -78,7 +78,7 @@ int GetFront(pQHead, y)
 struct LINK_QUEUE *pQHead;
 int *y;
 {
-    struct NODE_TYPE *temp = pQHead->front->pNext;
+    struct Node *temp = pQHead->front->pNext;
     if (IsEmpty(temp)) {
         printf("\tQueue Empty!");
         return 0;
@@ -92,7 +92,7 @@ int GetRear(pQHead, y)
 struct LINK_QUEUE *pQHead;
 int *y;
 {
-    struct NODE_TYPE *temp = pQHead->front;
+    struct Node *temp = pQHead->front;
     if (IsEmpty(temp)) {
         printf("\tQueue Empty!");
         return 0;
@@ -116,7 +116,7 @@ void Clear(pQHead) struct LINK_QUEUE *pQHead;
 
 void PrintNode(pQHead) struct LINK_QUEUE *pQHead;
 {
-    struct NODE_TYPE *temp = pQHead->front;
+    struct Node *temp = pQHead->front;
     int i = 0;
     /*如果队列为空*/
     if (IsEmpty(pQHead)) {

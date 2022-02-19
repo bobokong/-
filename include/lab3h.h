@@ -1,10 +1,12 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-/*    链式存储结构下线性表的基本操作     */
+#include "DataStructure.h"
+
+/* 链式存储结构下线性表的基本操作 */
 
 /*初始化链表：创建一空链表*/
-void Initiate(list) struct LIST_TYPE *list;
+void Initiate(list) List *list;
 {
     list->pHead = NULL;
     list->Length = 0;
@@ -12,18 +14,18 @@ void Initiate(list) struct LIST_TYPE *list;
 
 /*取链表的长度：共有几个结点*/
 int Length(list)
-struct LIST_TYPE *list;
+List *list;
 {
     return list->Length;
 }
 
 /*读取序号为I的结点（即链表中的第I个结点）的数据域*/
 int *GetAt(list, I)
-struct LIST_TYPE *list;
+List *list;
 int I;
 {
     int k;
-    struct NODE_TYPE *pNode = list->pHead;
+    Node *pNode = list->pHead;
     if ((I >= 1) && (I <= list->Length)) {
         for (k = 1; k < I; k++) {
             pNode = pNode->pNext;
@@ -34,12 +36,12 @@ int I;
 }
 
 /*查找数据域为x的结点*/
-struct NODE_TYPE *Find(list, x)
-struct LIST_TYPE *list;
+Node *Find(list, x)
+List *list;
 int x;
 {
     int k;
-    struct NODE_TYPE *pNode = list->pHead;
+    Node *pNode = list->pHead;
     while (pNode != NULL) {
         if (pNode->Data == x)
             return pNode;
@@ -49,12 +51,12 @@ int x;
 }
 
 /*查找数据域为x的结点的前驱结点*/
-struct NODE_TYPE *GetPrior(list, x)
-struct LIST_TYPE *list;
+Node *GetPrior(list, x)
+List *list;
 int x;
 {
     int k;
-    struct NODE_TYPE *pNode = list->pHead;
+    Node *pNode = list->pHead;
     if (!pNode)
         return NULL;
     if (pNode->pNext == NULL)
@@ -68,11 +70,11 @@ int x;
 }
 
 /*查找数据域为x的结点的后继结点*/
-struct NODE_TYPE *GetNext(list, x)
-struct LIST_TYPE *list;
+Node *GetNext(list, x)
+List *list;
 int x;
 {
-    struct NODE_TYPE *pNode = Find(list, x);
+    Node *pNode = Find(list, x);
     if (!pNode)
         return NULL;
     else
@@ -82,19 +84,19 @@ int x;
 /*在链表的第I个结点位置插入数据域为x的结点*/
 /*bool　Insert(list,I,x)*/
 int Insert(list, I, x)
-struct LIST_TYPE *list;
+List *list;
 int I;
 int x;
 {
-    struct NODE_TYPE *pNewNode;
-    struct NODE_TYPE *pPreNode;
+    Node *pNewNode;
+    Node *pPreNode;
     int i;
 
     if ((I > list->Length + 1) || (I <= 0))
         return 0;
 
     if (I == 1) {
-        pNewNode = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+        pNewNode = (Node *)malloc(sizeof(Node));
         pNewNode->Data = x;
         pNewNode->pNext = list->pHead;
         list->pHead = pNewNode;
@@ -107,7 +109,7 @@ int x;
         pPreNode = pPreNode->pNext;
     }
 
-    pNewNode = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    pNewNode = (Node *)malloc(sizeof(Node));
     pNewNode->Data = x;
     pNewNode->pNext = pPreNode->pNext;
     pPreNode->pNext = pNewNode;
@@ -117,11 +119,11 @@ int x;
 
 /*删除链表的第I个结点*/
 int Delete(list, I)
-struct LIST_TYPE *list;
+List *list;
 int I;
 {
-    struct NODE_TYPE *pDelNode;
-    struct NODE_TYPE *pPreNode;
+    Node *pDelNode;
+    Node *pPreNode;
     int i;
 
     if ((I > list->Length) || (I <= 0))
@@ -149,9 +151,9 @@ int I;
 
 /*print the list*/
 int PrintList(list)
-struct LIST_TYPE *list;
+List *list;
 {
-    struct NODE_TYPE *pNode;
+    Node *pNode;
     int i;
 
     pNode = list->pHead;

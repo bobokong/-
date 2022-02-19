@@ -12,13 +12,6 @@
  */
 #define MAX_LEN 8
 
-// // first solution 
-// struct st_QUEUE {
-//     int Q[MAX_LEN];
-//     int Front, Rear;
-// };
-// typedef struct st_QUEUE QUEUE;
-
 /** second solution */
 typedef struct {
     int Q[MAX_LEN];

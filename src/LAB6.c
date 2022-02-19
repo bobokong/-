@@ -21,24 +21,26 @@
 #include "stdio.h"
 #define MAX_LEN 16
 
-struct A {
+struct List {
     int list[MAX_LEN];
     int n;
 };
 
+void Initiate();
+int Length();
+int *GetAt();
+int GetIndex();
+int *GetPrior();
+int *GetNext();
+int Insert();
+int Delete();
+void Reverse();
+
 int main() {
-    void Initiate();
-    int Length();
-    int *GetAt();
-    int GetIndex();
-    int *GetPrior();
-    int *GetNext();
-    int Insert();
-    int Delete();
-    void Reverse();
+    
     /*下面填写主程序，完成上述功能要求*/
     int i, n, x, id, data, data1, data2;
-    struct A aa;
+    struct List aa;
     printf("Intiate List!\n");
     /* ①创建一个空表[Initiate( )]；   */
     Initiate(&aa);
@@ -96,7 +98,7 @@ int main() {
 /* ⑨调用自行编写的顺序结构下线性表的逆转子程序Reverse( )，打印输出逆转后的线性表。     */
 void Reverse(a)
     /*元素下标与元素个数不对应；元素下标=元素个数-1*/
-    struct A *a;
+    struct List *a;
 {
     /*下面填写子程序，完成顺序结构下线性表的逆转*/
 
@@ -113,7 +115,7 @@ void Reverse(a)
 
 /*初始化线性表：创建一空表*/
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
-void Initiate(a) struct A *a;
+void Initiate(a) struct List *a;
 {
     a->n = 0;
     /*元素下标与元素个数对应；空表里有一个0元素*/
@@ -123,7 +125,7 @@ void Initiate(a) struct A *a;
 /*取线性表的长度：共有几个有效结点*/
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 int Length(a)
-struct A *a;
+struct List *a;
 {
     return a->n;
 }
@@ -131,7 +133,7 @@ struct A *a;
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 /*读取第I个元素*/
 int *GetAt(a, I)
-struct A *a;
+struct List *a;
 int I;
 {
     if ((I >= 1) && (I <= a->n))
@@ -143,7 +145,7 @@ int I;
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 /*返回元素x的序号（线性表中第几个元素）*/
 int GetIndex(a, x)
-struct A *a;
+struct List *a;
 int x;
 {
     int k;
@@ -157,7 +159,7 @@ int x;
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 /*返回元素x的前驱元素*/
 int *GetPrior(a, x)
-struct A *a;
+struct List *a;
 int x;
 {
     int k;
@@ -171,7 +173,7 @@ int x;
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 /*返回元素x的后继元素*/
 int *GetNext(a, x)
-struct A *a;
+struct List *a;
 int x;
 {
     int k;
@@ -184,7 +186,7 @@ int x;
 
 /*bool Insert(a,I,x)*/ /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 int Insert(a, I, x)    /*将元素x插入到线性表的第I个元素的位置，线性表长度加1*/
-struct A *a;
+struct List *a;
 int I;
 int x;
 {
@@ -206,7 +208,7 @@ int x;
 /*元素下标与元素个数不对应；元素下标=元素个数-1*/
 /*删除线性表中第I个元素，线性表长度减1*/
 int Delete(a, I) /*bool Delete(a,I)*/
-struct A *a;
+struct List *a;
 int I;
 {
     int k;

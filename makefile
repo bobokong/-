@@ -1,7 +1,7 @@
 CC=gcc
 
 # -MM -MMD -MP 
-CFLAGS=-g -O2 -Iinclude -std=gnu11 -Wno-unused-result -MMD -MP
+CFLAGS=-g -O2 -Iinclude -Iinclude/algorithm -std=gnu11 -Wno-unused-result -MMD -MP
 # -std=c++17 
 # -lcurses
 # `ncurses5-config --cflags --libs`
@@ -17,7 +17,7 @@ ODIR=build
 	#LABW8.c
 
 includes = $(wildcard include/*.h)
-sources=LAB1.c LAB2A.c LAB2B.c LAB2C.c LAB3A.c LAB3B.c LAB3C.c \
+sources=LAB2A.c LAB2B.c LAB2C.c LAB3A.c LAB3B.c LAB3C.c \
 	LAB4.c LAB5.c LAB6.c LAB7A.c LAB8A.c LAB9A.c \
 	LABW1.c LABW2.c LABW3.c
 
@@ -27,15 +27,22 @@ OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))
 
 all: makedir main 
 
-main: $(OBJS) 
+main: $(OBJS) build/LAB1.exe
 
 # 自动处理头文件的依赖关系
 DEPENDS := $(patsubst %.exe, %.d, $(OBJS))
 -include $(DEPENDS)
 # <https://stackoverflow.com/questions/52034997/how-to-make-makefile-recompile-when-a-header-file-is-changed>
 
-$(OBJS): $(ODIR)/%.exe: $(IDIR)/%.c makefile
+# $(OBJS): 
+$(ODIR)/%.exe: $(IDIR)/%.c makefile
 	$(CC) $(CFLAGS) $< -o $@
+
+build/LAB1.exe: src/LAB1.c build/Queue.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+build/Queue.o: include/algorithm/Queue.c 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # %.o: %.cpp Makefile
 # 	$(CXX) $(WARNING) $(CXXFLAGS) -MMD -MP -c $< -o $@

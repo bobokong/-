@@ -1,16 +1,16 @@
 #include<stdio.h>
 
 /*链式队列结点结构*/
-struct NODE_TYPE {
+struct Node {
     int Data;
     /*后继结点,负责建立队列各结点之间的联系，前一个结点的pNext指向后一个结点，形成链式队列*/
-    struct NODE_TYPE *pNext;
+    struct Node *pNext;
 };
 
 /* 链式队列结构*/
 struct LINK_QUEUE {
-    struct NODE_TYPE *front; /*链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)*/
-    struct NODE_TYPE *rear;  /*链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)*/
+    struct Node *front; /*链式队列的队头指针，总是指向队列的头结点(出队一次，第二个结点变为头结点)*/
+    struct Node *rear;  /*链式队列的队尾指针，入队时指向新插入结点(总是指向队列的最后一个结点)*/
     int Length;
 };
 
@@ -18,7 +18,7 @@ struct LINK_QUEUE {
 void InitQueue(pQHead) struct LINK_QUEUE *pQHead;
 {
     /*队列头结点的队头和队尾指针申请内存*/
-    pQHead->front = pQHead->rear = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    pQHead->front = pQHead->rear = (struct Node *)malloc(sizeof(struct Node));
     if (!pQHead->front) /*检测是否申请失败*/
         printf("pQHead->front malloc error!\n");
     /*设置头结点指针域为空*/
@@ -37,7 +37,7 @@ void Add(pQHead, x) struct LINK_QUEUE *pQHead;
 int x;
 {
     /*创建新结点,并申请内存*/
-    struct NODE_TYPE *temp = (struct NODE_TYPE *)malloc(sizeof(struct NODE_TYPE));
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
     if (!temp)
         printf("temp malloc error!\n");
     temp->Data = x;
@@ -50,7 +50,7 @@ int x;
 int Del(pQHead)
 struct LINK_QUEUE *pQHead;
 {
-    struct NODE_TYPE *temp;
+    struct Node *temp;
     if (IsEmpty(pQHead)) /*如果队列为空,则返回Error*/
     {
         printf("Error! Queue Empty!\n");
@@ -93,7 +93,7 @@ int *y;
 /*清空队列*/
 void Clear(pQHead) struct LINK_QUEUE *pQHead;
 {
-    struct NODE_TYPE *temp = pQHead->front->pNext;
+    struct Node *temp = pQHead->front->pNext;
     while (temp) {
         pQHead->front->pNext = temp->pNext;
         free(temp);
@@ -105,7 +105,7 @@ void Clear(pQHead) struct LINK_QUEUE *pQHead;
 
 void PrintNode(pQHead) struct LINK_QUEUE *pQHead;
 {
-    struct NODE_TYPE *temp = pQHead->front;
+    struct Node *temp = pQHead->front;
     int i = 1;
     /*如果队列为空退出*/
     if (IsEmpty(pQHead)) {

@@ -16,22 +16,13 @@
 #include "math.h"
 #include "stdio.h"
 
-struct NODE_TYPE {
-    int Data;
-    struct NODE_TYPE *pNext;
-};
-struct LIST_TYPE {
-    struct NODE_TYPE *pHead;
-    int Length;
-};
-
 #include "lab3h.h"
 
 int main() {
     void Split();
     /*下面填写主程序*/
     int i, n, x;
-    struct NODE_TYPE list, list1, list2;
+    struct Node list, list1, list2;
     printf("Intiate List!\n");
     Initiate(&list);
     Initiate(&list1);
@@ -57,9 +48,9 @@ int main() {
 
 /*  链表分解程序    */
 /* list为原链表指针，list1为奇数链表指针，list2为偶数链表指针 */
-void Split(list, list1, list2) struct LIST_TYPE *list;
-struct LIST_TYPE *list1;
-struct LIST_TYPE *list2;
+void Split(list, list1, list2) List *list;
+List *list1;
+List *list2;
 {
     /*下面填写子程序*/
     int n = 1, m = 1, data, i;

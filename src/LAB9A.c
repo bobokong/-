@@ -11,20 +11,7 @@
 /* ⑦编写一个不调用子程序Pop ( )的打印栈中元素的子程序PrintStack( )，不破坏栈           */
 /* ⑧要求：提供尽可能友好的人机对话界面，便于用户（非程序设计者）使用。                 */
 /*       ********************************************************************           */
-
-#include "stdio.h"
-
-
-struct NODE_TYPE {
-    int Data;
-    struct NODE_TYPE *pNext;
-};
-struct LIST_STACK {
-    struct NODE_TYPE *pTop;
-    int Length;
-};
-
-#include "lab6h.h"
+#include "lab9_stack.h"
 
 int main() {
     void PrintStack();
@@ -35,7 +22,7 @@ int main() {
 
     /*下面填写主程序*/
     /* ①创建一个空栈[Initiate( )]；                                                              */
-    struct NODE_TYPE Stack;
+    struct Node Stack;
     Initiate(&Stack);
 
     /* ②判断新建的栈是否为空；                                                                   */
@@ -74,7 +61,7 @@ int main() {
 }
 void PrintStack(Stack) struct LIST_STACK *Stack;
 {
-    struct NODE_TYPE *pNode;
+    struct Node *pNode;
     int i;
     pNode = Stack->pTop;
     printf("\n\t\t");

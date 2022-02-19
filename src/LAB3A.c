@@ -12,6 +12,7 @@ struct student {
     char name[8];
     int score[4];
 } stu[N];
+
 /**
  * @brief 
  * input students' information
