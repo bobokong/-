@@ -1,3 +1,4 @@
+// gcc -g -O2 src/LAB2C.c -o LAB2C
 #include <stdio.h>
 
 int main() {
