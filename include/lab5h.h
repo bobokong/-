@@ -30,7 +30,7 @@ int Pop(Stack)
 struct STACK *Stack;
 {
     if (IsEmpty(Stack))
-        return NULL;
+        return -1; // change NULL into -1
 
     return Stack->s[Stack->Top--];
 }
@@ -40,7 +40,7 @@ int GetTop(Stack)
 struct STACK *Stack;
 {
     if (IsEmpty(Stack))
-        return NULL;
+        return -1;
 
     return Stack->s[Stack->Top];
 }

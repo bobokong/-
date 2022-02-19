@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 /*       *******************************************        */
 /*                      链式存储结构下栈的基本操作                           */
 /*       *******************************************        */
@@ -38,7 +40,7 @@ struct LIST_STACK *list_stack;
     struct NODE_TYPE *pNode;
 
     if (IsEmpty(list_stack))
-        return NULL;
+        return -1;
 
     value = list_stack->pTop->Data;
     pNode = list_stack->pTop;
@@ -56,7 +58,7 @@ struct LIST_STACK *list_stack;
     int value;
 
     if (IsEmpty(list_stack))
-        return NULL;
+        return -1;
 
     value = list_stack->pTop->Data;
     return value;

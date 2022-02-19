@@ -14,9 +14,8 @@ ODIR=build
 	#LABW8.c
 
 sources=LAB1.c LAB2A.c LAB2B.c LAB2C.c LAB3A.c LAB3B.c LAB3C.c \
-	LAB4.c LAB5.c LAB6.c LAB7A.c LAB8A.c 
-# LAB9A.c
-# LABW1.c LABW2.c LABW3.c
+	LAB4.c LAB5.c LAB6.c LAB7A.c LAB8A.c LAB9A.c \
+	LABW1.c LABW2.c LABW3.c
 
 SOURCES=$(patsubst %,$(IDIR)/%, $(sources))
 OBJS=$(patsubst %.c,$(ODIR)/%.exe, $(sources))

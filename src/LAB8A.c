@@ -58,6 +58,6 @@ int main() {
         if (i == 1)
             printf("\t\tTop");
     }
-    getch();
+    // getch();
     return 0;
 }

@@ -19,6 +19,7 @@
 
 #include "math.h"
 #include "stdio.h"
+
 struct NODE_TYPE {
     int Data;
     struct NODE_TYPE *pNext;
@@ -30,11 +31,12 @@ struct LIST_TYPE {
 
 #include "lab3h.h"
 
-main() {
+void main() {
     void Reverse();
 
     /*下面填写主程序*/
-    int i, n, x, data, *id, *data1, *data2;
+    int i, n, x, data;
+    struct NODE_TYPE *id, *data1, *data2;
     struct NODE_TYPE list;
     printf("Intiate List!\n");
     /* ①创建一个空表[Initiate( )]；                                                                              */
@@ -57,11 +59,12 @@ main() {
     printf("Enter the data to be searched :");
     scanf("%d", &data);
     id = Find(&list, data);
-    printf("Index of data %d is :\t%d\n", data, *id);
+
+    printf("Index of data %d is :\t%d\n", data, id->Data);
     data1 = GetPrior(&list, data);
-    printf("Prior of data %d is :\t%d\n", data, *data1);
+    printf("Prior of data %d is :\t%d\n", data, data1->Data);
     data2 = GetNext(&list, data);
-    printf("Next of data %d is  :\t%d\n", data, *data2);
+    printf("Next of data %d is  :\t%d\n", data, data2->Data);
     /* ⑦通过调用子程序Insert( ) 在当前线性表的表头和表尾各插入一个元素0 ，打印输出插入后的线性表[PrintList( )]； */
     printf("Insert data 0 into Head and End of list!\n");
     Insert(&list, 1, 0);
@@ -77,8 +80,9 @@ main() {
     printf("Reverse list!\n");
     Reverse(&list);
     PrintList(&list);
-    getch();
+    // getch();
 }
+
 void Reverse(list) struct LIST_TYPE *list;
 {
     int i;

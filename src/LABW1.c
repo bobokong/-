@@ -50,7 +50,7 @@ int main() {
     printf("The even list is:\n");
     PrintList(&list2);
 
-    getch();
+    // getch();
 	return 0;
 }
 

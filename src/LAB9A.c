@@ -14,6 +14,7 @@
 
 #include "stdio.h"
 
+
 struct NODE_TYPE {
     int Data;
     struct NODE_TYPE *pNext;
@@ -68,7 +69,7 @@ int main() {
         printf("\n\t\t\t%d",Pop(&Stack));*/
     printf("Current stack is :\n");
     PrintStack(&Stack);
-    getch();
+    // getch();
     return 0;
 }
 void PrintStack(Stack) struct LIST_STACK *Stack;
@@ -78,7 +79,7 @@ void PrintStack(Stack) struct LIST_STACK *Stack;
     pNode = Stack->pTop;
     printf("\n\t\t");
     if (IsEmpty(pNode))
-        return NULL;
+        return;
     else
         for (i = 1; i <= Stack->Length; i++) {
             printf(" %d ->\t", pNode->Data);
