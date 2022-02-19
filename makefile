@@ -1,6 +1,6 @@
 CC=gcc
 
-CFLAGS=-g -O2 -Iinclude
+CFLAGS=-g -O2 -Iinclude -Wno-unused-result
 # `ncurses5-config --cflags --libs`
 
 IDIR=src
@@ -8,7 +8,7 @@ ODIR=build
 
 # LAB2B.c 
 sources=ch2_a.c ch2_b.c ch2_c.c \
-	LAB3A.c LAB3C.c LAB3C.c \
+	LAB3A.c LAB3B.c LAB3C.c \
 	LABW7.c \
 	LABW8.c
 

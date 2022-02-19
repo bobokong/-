@@ -1,27 +1,28 @@
-#include "stdio.h"
-// #include "conio.h"
 #include <curses.h>
 
-#define N 5
+#include "stdio.h"
+// #include "conio.h"
+
+#define N 1
+#define N_COURSE 2
+
 struct student {
-    char num[6];
-    char sex[8];
-    char name[8];
-    int score[4];
+    char name[10];
+    int score[N_COURSE];
 } stu[N];
 
+// 1. csv文件输入、输出
+// 2. 多个人，struct array
+// 3. 由struct到class
+//    
 void input() {
-    int i, j;
-    for (i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) {
         printf("\n please input %d of %d\n", i + 1, N);
-        printf("num: ");
-        scanf("%s", &stu[i].num);
-        printf("sex: ");
-        scanf("%s", &stu[i].sex);
-        printf("name: ");
-        scanf("%s", &stu[i].name);
-        for (j = 0; j < 3; j++) {
-            printf("score %d.", j + 1);
+        printf("Student Name: ");
+        scanf("%s", stu[i].name);  // character array no need &
+
+        for (int j = 0; j < N_COURSE; j++) {
+            printf("score %d: ", j + 1);
             scanf("%d", &stu[i].score[j]);
         }
         printf("\n");
@@ -29,19 +30,19 @@ void input() {
 }
 
 void print() {
-    int i, j;
     printf("\nNo. Name  sex Sco1 Sco2 Sco3\n");
-    for (i = 0; i < N; i++) {
-        printf("%-6s%-4s%-10s", stu[i].num, stu[i].sex, stu[i].name);
-        for (j = 0; j < 3; j++)
+    for (int i = 0; i < N; i++) {
+        printf("%-10s", stu[i].name);
+
+        for (int j = 0; j < N_COURSE; j++)
             printf("%-8d", stu[i].score[j]);
         printf("\n");
     }
 }
 
-main() {
+int main() {
     input();
     print();
-
-    getch();
+    // getch();
+    return 0;
 }

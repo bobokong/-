@@ -1,5 +1,11 @@
 #include "lab8.h"
 
+/**
+ * gcc src/LABW8.c -o build/LABW8.exe -g -O2 -Iinclude -lcurses
+ *
+ * @references
+ * 1. https://stackoverflow.com/questions/7271939/warning-ignoring-return-value-of-scanf-declared-with-attribute-warn-unused-r
+ */
 
 int main() {
     int i, j, x, y, length;  //用于保存出队的元素
