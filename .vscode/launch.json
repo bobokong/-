@@ -32,7 +32,7 @@
                 //     "text": "set solib-search-path sharedLibraryPath/lib"
                 // }
             ],
-            "preLaunchTask": "C/C++: gcc build active file",
+            // "preLaunchTask": "C/C++: gcc build active file",
             "miDebuggerPath": "/usr/bin/gdb"
         }
         

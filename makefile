@@ -1,7 +1,7 @@
 CC=gcc
 
 # -MM -MMD -MP 
-CFLAGS=-g -O2 -Iinclude -std=gnu17 -Wno-unused-result -MMD -MP
+CFLAGS=-g -O2 -Iinclude -std=gnu11 -Wno-unused-result -MMD -MP
 # -std=c++17 
 # -lcurses
 # `ncurses5-config --cflags --libs`
