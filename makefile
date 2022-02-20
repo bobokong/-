@@ -38,11 +38,12 @@ DEPENDS := $(patsubst %.exe, %.d, $(OBJS))
 $(ODIR)/%.exe: $(IDIR)/%.c makefile
 	$(CC) $(CFLAGS) $< -o $@
 
-build/LAB1.exe: src/LAB1.c build/Queue.o
+build/LAB1.exe: src/LAB1.c 
 	$(CC) $(CFLAGS) $^ -o $@
 
-build/Queue.o: include/algorithm/Queue.c 
-	$(CC) $(CFLAGS) -c $< -o $@
+# build/Queue.o
+# build/Queue.o: include/algorithm/Queue.c 
+# 	$(CC) $(CFLAGS) -c $< -o $@
 
 # %.o: %.cpp Makefile
 # 	$(CXX) $(WARNING) $(CXXFLAGS) -MMD -MP -c $< -o $@

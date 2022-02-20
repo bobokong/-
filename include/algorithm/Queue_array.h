@@ -108,21 +108,18 @@ void PrintNode(QUEUE *Queue) {
         if (i == Queue->Rear)
             printf("Rear");
     }
-
     printf("\n");
 }
 
 /*打印循环队列：基于队列结构*/
 void PrintNode_1(QUEUE *Queue) {
-    int i;
-
     if (IsEmpty(Queue)) {
         printf("Queue Empty!");
         return;
     }
     /* printf("\nThe node in the QUEUE is:\n");*/
     printf("\n\tNode:");
-    i = (Queue->Front + 1) % MAX_LEN;
+    int i = (Queue->Front + 1) % MAX_LEN;
     while (i <= Queue->Rear) {
         printf("\t %d", i);
         i = (i + 1) % MAX_LEN;
@@ -134,16 +131,14 @@ void PrintNode_1(QUEUE *Queue) {
         printf("\t %d", Queue->Q[i]);
         i = (i + 1) % MAX_LEN;
     }
-    printf("\n\t\tFront");
+    printf("\n\t\tFront\n");
 
-    printf("\n\t");
+    printf("\t");
     i = (Queue->Front + 1) % MAX_LEN;
     while (i <= Queue->Rear) {
         printf("\t");
         i = (i + 1) % MAX_LEN;
     }
-    printf("Rear");
-
-    printf("\n");
+    printf("Rear\n");
     /* printf("That's all!");*/
 }

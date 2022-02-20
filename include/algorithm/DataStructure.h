@@ -8,6 +8,8 @@
 
 /* Node: 节点*/
 typedef struct Node Node;
+
+// C has no template
 struct Node {
     int Data;
     /*后继结点,负责建立队列各结点之间的联系，前一个结点的pNext指向后一个结点，形成链式队列*/
